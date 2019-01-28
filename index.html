@@ -12,10 +12,11 @@
     <script src="grid_world.js"></script>
     <script src="iterative_policy_evaluation.js"></script>
     <script src="monte_carlo.js"></script>
+    <script src="value_iteration.js"></script>
 </head>
     <div id="output"></div>
     <script>
-        Tools.log("::: Iterative Policy evaluation :::");
+        Tools.log("::: Iterative Policy Evaluation :::");
         const iterative_policy_evaluation = new Iterative_policy_evaluation();
         iterative_policy_evaluation.iterative_policy_evaluation();
         Tools.log("\n\n\n\n");
@@ -23,6 +24,11 @@
         Tools.log("::: Monte Carlo :::");
         const monte_carlo = new Monte_carlo();
         monte_carlo.monte_carlo();
+        Tools.log("\n\n\n\n");
+
+        Tools.log("::: Value Iteration :::");
+        const value_iteration = new Value_iteration();
+        value_iteration.value_iteration();
         Tools.log("\n\n\n\n");
     </script>
 </html>

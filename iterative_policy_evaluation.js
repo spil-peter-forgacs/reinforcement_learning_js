@@ -22,7 +22,8 @@ class Iterative_policy_evaluation {
         // p(s',r|s,a) - the next state and reward given your action-state pair
         // we are only modeling p(a|s) = uniform
         // how would the code change if p(s',r|s,a) is not deterministic?
-        const grid = standard_grid();
+        const grid_world = new Grid_world();
+        const grid = grid_world.standard_grid();
 
         // states will be positions (i,j)
         // simpler than tic-tac-toe because we only have one "game piece"

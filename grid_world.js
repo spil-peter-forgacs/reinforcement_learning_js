@@ -95,50 +95,52 @@ class Grid {
     }
 }
 
-function standard_grid() {
-    // define a grid that describes the reward for arriving at each state
-    // and possible actions at each state
-    // the grid looks like this
-    // x means you can't go there
-    // s means start position
-    // number means reward at that state
-    // .  .  .  1
-    // .  x  . -1
-    // s  .  .  .
-    const g = new Grid(3, 4, [2, 0]);
-    const rewards = [];
-    rewards[[0, 3]] = 1;
-    rewards[[1, 3]] = -1;
-    const actions = [];
-    actions[[0, 0]] = ['D', 'R'];
-    actions[[0, 1]] = ['L', 'R'];
-    actions[[0, 2]] = ['L', 'D', 'R'];
-    actions[[1, 0]] = ['U', 'D'];
-    actions[[1, 2]] = ['U', 'D', 'R'];
-    actions[[2, 0]] = ['U', 'R'];
-    actions[[2, 1]] = ['L', 'R'];
-    actions[[2, 2]] = ['L', 'R', 'U'];
-    actions[[2, 3]] = ['L', 'U'];
+class Grid_world {
+    standard_grid() {
+        // define a grid that describes the reward for arriving at each state
+        // and possible actions at each state
+        // the grid looks like this
+        // x means you can't go there
+        // s means start position
+        // number means reward at that state
+        // .  .  .  1
+        // .  x  . -1
+        // s  .  .  .
+        const g = new Grid(3, 4, [2, 0]);
+        const rewards = [];
+        rewards[[0, 3]] = 1;
+        rewards[[1, 3]] = -1;
+        const actions = [];
+        actions[[0, 0]] = ['D', 'R'];
+        actions[[0, 1]] = ['L', 'R'];
+        actions[[0, 2]] = ['L', 'D', 'R'];
+        actions[[1, 0]] = ['U', 'D'];
+        actions[[1, 2]] = ['U', 'D', 'R'];
+        actions[[2, 0]] = ['U', 'R'];
+        actions[[2, 1]] = ['L', 'R'];
+        actions[[2, 2]] = ['L', 'R', 'U'];
+        actions[[2, 3]] = ['L', 'U'];
 
-    g.set(rewards, actions);
-    return g;
-}
+        g.set(rewards, actions);
+        return g;
+    }
 
-function negative_grid(step_cost = -0.1) {
-    // in this game we want to try to minimize the number of moves
-    // so we will penalize every move
-    const g = standard_grid();
-    g.rewards[[0, 0]] = step_cost;
-    g.rewards[[0, 1]] = step_cost;
-    g.rewards[[0, 2]] = step_cost;
-    g.rewards[[0, 3]] = g.rewards[[0, 3]];
-    g.rewards[[1, 0]] = step_cost;
-    g.rewards[[1, 1]] = 0;
-    g.rewards[[1, 2]] = step_cost;
-    g.rewards[[1, 3]] = g.rewards[[1, 3]];
-    g.rewards[[2, 0]] = step_cost;
-    g.rewards[[2, 1]] = step_cost;
-    g.rewards[[2, 2]] = step_cost;
-    g.rewards[[2, 3]] = step_cost;
-    return g;
+    negative_grid(step_cost = -0.1) {
+        // in this game we want to try to minimize the number of moves
+        // so we will penalize every move
+        const g = this.standard_grid();
+        g.rewards[[0, 0]] = step_cost;
+        g.rewards[[0, 1]] = step_cost;
+        g.rewards[[0, 2]] = step_cost;
+        g.rewards[[0, 3]] = g.rewards[[0, 3]];
+        g.rewards[[1, 0]] = step_cost;
+        g.rewards[[1, 1]] = 0;
+        g.rewards[[1, 2]] = step_cost;
+        g.rewards[[1, 3]] = g.rewards[[1, 3]];
+        g.rewards[[2, 0]] = step_cost;
+        g.rewards[[2, 1]] = step_cost;
+        g.rewards[[2, 2]] = step_cost;
+        g.rewards[[2, 3]] = step_cost;
+        return g;
+    }
 }

@@ -41,7 +41,7 @@ class Tools {
             document.body.appendChild(this.myDiv);
         }
 
-        this.myDiv.innerHTML += message.replace(/ /g, "&nbsp;") + "<br >";
+        this.myDiv.innerHTML += message.replace(/ /g, "&nbsp;").replace(/\n/g, "<br />") + "<br >";
 
         console.log(message);
     }

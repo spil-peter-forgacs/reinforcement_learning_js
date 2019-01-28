@@ -60,7 +60,8 @@ class Monte_carlo {
 
         // use the standard grid again (0 for every step) so that we can compare
         // to iterative policy evaluation
-        const grid = standard_grid();
+        const grid_world = new Grid_world();
+        const grid = grid_world.standard_grid();
 
         // print rewards
         Tools.log("rewards:");
