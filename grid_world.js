@@ -77,7 +77,7 @@ class Grid {
         // raise an exception if we arrive somewhere we shouldn't be
         // should never happen
         if (this.all_states().indexOf(this.current_state()) === -1) {
-            console.error("Error in current state");
+            Tools.error("Error in current state");
         }
     }
     
@@ -124,7 +124,7 @@ function standard_grid() {
     return g;
 }
 
-function negative_grid() {
+function negative_grid(step_cost = -0.1) {
     // in this game we want to try to minimize the number of moves
     // so we will penalize every move
     const g = standard_grid();
