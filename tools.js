@@ -45,4 +45,8 @@ class Tools {
 
         console.log(message);
     }
+
+    static print(message) {
+        this.log(message);
+    }
 }

@@ -91,7 +91,9 @@ class Grid {
         // simple way to get all states
         // either a position that has possible next actions
         // or a position that yields a reward
-        return Object.keys(this.actions).concat(Object.keys(this.rewards))
+        const actions = Object.keys(this.actions);
+        const rewards = Object.keys(this.rewards);
+        return [...new Set([...actions, ...rewards])];
     }
 }
 
@@ -132,11 +134,8 @@ class Grid_world {
         g.rewards[[0, 0]] = step_cost;
         g.rewards[[0, 1]] = step_cost;
         g.rewards[[0, 2]] = step_cost;
-        g.rewards[[0, 3]] = g.rewards[[0, 3]];
         g.rewards[[1, 0]] = step_cost;
-        g.rewards[[1, 1]] = 0;
         g.rewards[[1, 2]] = step_cost;
-        g.rewards[[1, 3]] = g.rewards[[1, 3]];
         g.rewards[[2, 0]] = step_cost;
         g.rewards[[2, 1]] = step_cost;
         g.rewards[[2, 2]] = step_cost;
